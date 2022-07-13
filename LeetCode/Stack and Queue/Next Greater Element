@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        
+        stack <int> S;
+        unordered_map <int,int> M;
+        vector <int> res;
+        for(auto i:nums2)
+        {
+            while(S.size() && S.top() < i)
+            {
+                M[S.top()] = i;
+                S.pop();
+            }
+            
+            S.push(i);
+        }
+        
+        for(auto i:nums1)
+        {
+            res.push_back(M.count(i)?M[i]:-1);
+        }
+        return res;
+    }
+};
