@@ -1,0 +1,31 @@
+
+class Solution
+{
+    public:
+    //Function to return a list of nodes visible from the top view 
+    //from left to right in Binary Tree.
+    vector<int> topView(Node *root)
+    {
+        vector<int> res;
+        if(!root){return res;}
+        TraverseLeft(root, res);
+        TraverseRight(root->right, res);
+    }
+    
+    void TraverseLeft(Node *root, vector<int> &res)
+    {
+        if(!root){return;}
+        TraverseLeft(root->left,res);
+        res.push_back(root->data);
+    }
+    void TraverseRight(Node *root, vector<int> &res)
+    {
+        if(!root)
+        {
+            return;
+        }
+        res.push_back(root->data);
+        TraverseRight(root->right,res);
+    }
+
+};
