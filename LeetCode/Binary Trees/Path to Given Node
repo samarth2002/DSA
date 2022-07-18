@@ -1,0 +1,21 @@
+ void bfs(TreeNode* A,int B,vector<int> v,vector<int> &ans){
+
+     v.push_back(A->val);
+
+     if(B==A->val){ ans=v; return;}
+
+   if(A->left!=NULL) bfs(A->left,B,v,ans);
+
+   if(A->right!=NULL) bfs(A->right,B,v,ans);
+
+ }
+
+vector<int> Solution::solve(TreeNode* A, int B) {
+
+    vector<int> v,ans;
+
+  bfs(A,B,v,ans);
+
+    return ans;
+
+}
