@@ -1,0 +1,69 @@
+// My attempt 
+#include <bits/stdc++.h>
+using namespace std;
+
+
+bool isPlaceable(vector<int> &v , int a)
+{
+    for(int i = a ; i > 1; i--)
+    {
+        if(v[i-1]==-1)
+        {
+            v[i-1] = a;
+            return true;
+        }
+    }
+    return false;
+}
+
+bool isPositive(vector<int> A)
+{
+    for(int i = 0 ; i < A.size(); i++)
+    {
+        if(A[i]<=i)
+        {
+            return false;
+        }
+    }
+    return true;
+}
+int main() {
+	int t;
+	cin >> t;
+	for(int i = 0 ; i < t; i++)
+	{
+	    int n;
+	    vector<int> A;
+	    for(int i = 0 ; i < n;i++)
+	    {
+	        cin >> A[i];
+	    }
+	    if(isPositive(A)){cout << 1 << endl;}
+	    else
+	    {
+	          int k = 0;
+	          vector<vector<int>> res;
+	          res.resize(2);
+	          for(int i = 0; i < res.size() || k==(A.size()-1); i++)
+	          {
+	              res[i].resize(A.size(),-1);
+	              for(int j = k ; j < A.size(); j++)
+	              {
+	                  if(isPlaceable(res[i],A[j]))
+	                  {
+	                      k++;
+	                  }
+	                  else
+	                  {
+	                      res.resize(res.size()+1);
+	                  }
+	              }
+	          }
+	          cout << res.size() << endl;
+	    }
+	  
+	    
+	}
+	
+	return 0;
+}
