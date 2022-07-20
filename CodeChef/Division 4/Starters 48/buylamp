@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	for(int i = 0 ; i < t ; i++)
+	{
+	    int n , k , x , y;
+	    cin >> n >> k >> x >> y;
+	   
+	    cout << (k*x) + (x>y?(n-k)*y:(n-k)*x) << endl;
+	}
+	return 0;
+}
