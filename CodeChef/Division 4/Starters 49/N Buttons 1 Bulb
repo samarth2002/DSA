@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	for(int i = 0 ; i < t ; i++)
+	{
+	    int n;
+	    bool flag = true;
+	    cin >> n;
+	    string S,R;
+	    cin >> S >> R;
+	    for(int i = 0 ; i < n; i++)
+	    {
+	        if(S[i]!=R[i])
+	        {
+	            flag = !flag;
+	        }
+	    }
+	    if(flag==true)
+	    {
+	        cout << 1 << endl;
+	    }
+	    else
+	    {
+	        cout << 0 << endl;
+	    }
+	}
+	return 0;
+}
