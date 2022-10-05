@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+bool isVowel(char a)
+{
+    if(a=='a'|| a=='e'|| a=='i'|| a=='o'|| a=='u')
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+
+int main() {
+	 int T;
+    cin >> T;
+    for(int i = 0 ; i < T ; i++)
+    {
+        string S;
+        cin >> S;
+        int count = 0;
+        int maxCount = 0;
+        
+        for(int j = 0 ; j < S.length() ; j++)
+        {
+            
+            if(!isVowel(S[j]))
+            {
+                count = 0;
+            }else
+            {
+                count++;
+            }
+            maxCount = max(maxCount,count);
+        }
+        if(maxCount>2)
+        {
+            cout <<"Happy" << endl;
+        }
+        else
+        {
+            cout << "Sad" << endl;
+        }
+    }
+	return 0;
+}
