@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void Alice(string &S,string &T)
+{
+    char temp = S[0];
+    S.erase(0,1);
+    if(temp == '0')
+    {
+        T.insert(0,"0");
+    }else
+    {
+        T.push_back('1');
+    }
+}
+void Bob(string &S, string &T)
+{
+    char temp = S[S.size()-1];
+    S.erase(S.size()-1,1);
+    if(temp == '0')
+    {
+        T.push_back('0');
+    }
+    else
+    {
+        T.insert(0,"1");
+    }
+}
+
+
+int main() {
+	int T;
+	cin >> T;
+	
+	for(int i = 0 ; i < T ; i++)
+	{
+	    int N;
+	    cin >> N;
+	    string S;
+	    cin >> S;
+	    string T = "";
+	    
+
+	    while(N>0){
+	       Alice(S,T);
+	       N--;
+	       if(N==0)
+	       {
+	           break;
+	       }
+	       Bob(S,T);
+	       N--;
+	    }
+	    cout << T << endl;
+	}
+	return 0;
+}
