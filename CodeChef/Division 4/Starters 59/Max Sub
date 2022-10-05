@@ -1,0 +1,95 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int maxSubarray(vector<int> A)
+{
+    int maxi = INT_MIN;
+    int sum = 0;
+    for(int i = 0 ; i < A.size(); i++)
+    {
+        sum+=A[i];
+        maxi = max(maxi,sum);
+        
+        if(sum<0){sum = 0;}
+    }
+    // for(auto i:A)
+    // {
+    //     cout << i << " ";
+    // }
+    // cout << endl;
+    return maxi;
+}
+
+
+int main() {
+    int T;
+    cin >> T;
+    
+    for(int i = 0 ; i < T ; i++)
+    {
+        int N, M;
+        
+        cin >>N;
+        vector<int> A;
+        for(int j = 0 ; j < N ; j++)
+        {
+            int temp;
+            cin >> temp;
+            A.push_back(temp);
+        }
+        cin>>M;
+        vector<int> B;
+        for(int j = 0 ; j < M ; j++)
+        {
+            int temp;
+            cin >> temp;
+            B.push_back(temp);
+        }
+        int maximumSum = INT_MIN;
+        while(M>0)
+        {
+            
+            int X;   
+            if(B[0]>B[M-1])
+            {
+                X = B[0];
+                B.erase(B.begin());
+               
+            }
+            else
+            {
+ 
+                X = B[M-1];
+                B.pop_back();
+            }
+         
+            vector<int> temp1 = A;
+            vector<int> temp2 = A;
+            temp1.push_back(X);
+            temp2.insert(temp2.begin(),X);
+            int t1 = maxSubarray(temp1);
+            int t2 = maxSubarray(temp2);
+            // cout << t1 << " " << t2 << " "<< endl;
+            if(t1>=t2)
+            {
+                A = temp1;
+                maximumSum = max(maximumSum,t1);
+            }
+            else
+            {
+                A = temp2;
+                maximumSum = max(maximumSum,t2);
+            }
+            // for(auto i:A)
+            // {
+            //     cout << i << " ";
+            // }
+            // cout << endl;
+            N++;
+            M--;
+        }
+         cout << maximumSum << endl;
+        
+    }
+	return 0;
+}
