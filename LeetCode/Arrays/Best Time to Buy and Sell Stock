@@ -1,0 +1,41 @@
+//O(n^2)
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int maxi = INT_MIN;
+        for(int i = 0 ; i < n ; i++)
+        {
+            for(int j = i ; j < n; j++)
+            {
+                
+                maxi = max(maxi , prices[j]-prices[i]);
+            }
+        }
+        if(maxi < 0)
+        {
+            maxi = 0;
+        }
+        return maxi;
+    }
+};
+
+
+
+// O(n)
+
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int minPrice= INT_MAX;
+        int maxProf = 0;
+        for(int i = 0 ; i < n ; i++)
+        {
+            minPrice = min(prices[i],minPrice);
+            maxProf = max(maxProf, prices[i]-minPrice);
+        }
+        return maxProf;
+    }
+};
