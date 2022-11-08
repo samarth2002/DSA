@@ -1,0 +1,25 @@
+class Solution {
+public:
+    void Erase(string &s, int j)
+    {
+        s.erase(s.begin()+j);
+        s.erase(s.begin()+j)+1;
+    }
+    string makeGood(string s) {
+        int j = 0;
+
+        while(!s.empty()&&(j<s.size()-1))
+        {
+            if(abs(s[j]-s[j+1])==32)
+            {
+                Erase(s,j);
+                j = 0;
+            }else
+            {
+                j++;
+            }
+        }
+        
+        return s;
+    }
+};
