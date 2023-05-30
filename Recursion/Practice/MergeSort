@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+void Merge(vector<int> &A, int low, int mid, int high)
+{
+    vector<int> temp;
+    int left = low, right = mid+1;
+    while(left<= mid && right<=high)
+    {
+        int big = A[left]<=A[right]?A[left++]:A[right++];
+        temp.push_back(big);
+    }
+    while(left<=mid)
+    {
+        temp.push_back(A[left++]);
+    }
+    while(right<=high)
+    {
+        temp.push_back(A[right++]);
+    }
+    
+    for(int i = low ; i <= high; i++)
+    {
+        A[i] = temp[i-low];
+    }
+}
+
+
+void mergeSort(vector<int> &A, int low, int high)
+{
+    if(low==high){return;}
+    int mid = (high+low)/2;
+    mergeSort(A, low, mid);
+    mergeSort(A, mid+1, high);
+    Merge(A,low,mid,high);
+}
+
+
+
+int main() {
+
+    vector<int> A = {5,4,3,2,1};
+    mergeSort(A,0,A.size()-1);
+    for(auto i:A)
+    {
+        cout << i;
+    }
+    
+}
